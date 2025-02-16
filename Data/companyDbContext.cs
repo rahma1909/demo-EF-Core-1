@@ -22,7 +22,9 @@ namespace demo.Data
         }
 
         public DbSet<Employee> Employees { get; set; }
-        public DbSet<Department> Departments { get; set; }
+        //public DbSet<Department> Departments { get; set; }
+        public DbSet<product> products { get; set; }
+        //public DbSet<Project> projects { get; set; }
 
     }
 }
