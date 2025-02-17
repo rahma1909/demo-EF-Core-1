@@ -10,6 +10,68 @@ namespace demo.Data
 {
     internal class companyDbContext : DbContext
     {
+
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            //modelBuilder.Entity<Employee>().HasKey("EmpId");
+            //modelBuilder.Entity<Employee>().HasKey(nameof(Employee.EmpId));
+            //modelBuilder.Entity<Employee>().HasKey(E=>E.EmpId);
+
+            //modelBuilder.Entity<Employee>()
+            //    .Property(e=>e.Name)
+            //    .IsRequired()
+            //    .HasColumnType("varchar")
+            //    .HasMaxLength(50)
+            //    .HasColumnName("empName");
+
+            //modelBuilder.Entity<Employee>()
+            //    .Property(e => e.Age)
+            //    .IsRequired(false);
+
+
+            //modelBuilder.Entity<Employee>()
+            //    .Property(e => e.Salary)
+            //    .HasColumnType("money");
+
+            //modelBuilder.Entity<Employee>()
+            //    .Property(e => e.DateCreation)
+            //    //.HasDefaultValue(DateTime.Now)
+            //    .HasDefaultValueSql("Getdate()");
+
+
+            modelBuilder.Entity<Employee>(e =>
+            {
+
+                e.HasKey(E => E.EmpId);
+
+              e
+                    .Property(e => e.Name)
+                    .IsRequired()
+                    .HasColumnType("varchar")
+                    .HasMaxLength(50)
+                    .HasColumnName("empName");
+
+               e
+                    .Property(e => e.Age)
+                    .IsRequired(false);
+
+
+            e
+                    .Property(e => e.Salary)
+                    .HasColumnType("money");
+
+                modelBuilder.Entity<Employee>()
+                    .Property(e => e.DateCreation)
+                    //.HasDefaultValue(DateTime.Now)
+                    .HasDefaultValueSql("Getdate()");
+
+
+
+
+
+            });
+        }
         public companyDbContext() : base()
         {
 
