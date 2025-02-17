@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using demo.config;
 using demo.Data.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -14,6 +15,41 @@ namespace demo.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
+            modelBuilder.ApplyConfiguration(new EmpConfigrations());
+        }
+
+            //    modelBuilder.Entity<Employee>(e =>
+            //    {
+
+            //        e.HasKey(E => E.EmpId);
+
+            //        e
+            //              .Property(e => e.Name)
+            //              .IsRequired()
+            //              .HasColumnType("varchar")
+            //              .HasMaxLength(50)
+            //              .HasColumnName("empName");
+
+            //        e
+            //             .Property(e => e.Age)
+            //             .IsRequired(false);
+
+
+            //        e
+            //                .Property(e => e.Salary)
+            //                .HasColumnType("money");
+
+            //        modelBuilder.Entity<Employee>()
+            //            .Property(e => e.DateCreation)
+            //            //.HasDefaultValue(DateTime.Now)
+            //            .HasDefaultValueSql("Getdate()");
+
+
+
+
+
+            //    });
             //modelBuilder.Entity<Employee>().HasKey("EmpId");
             //modelBuilder.Entity<Employee>().HasKey(nameof(Employee.EmpId));
             //modelBuilder.Entity<Employee>().HasKey(E=>E.EmpId);
@@ -40,38 +76,7 @@ namespace demo.Data
             //    .HasDefaultValueSql("Getdate()");
 
 
-            modelBuilder.Entity<Employee>(e =>
-            {
-
-                e.HasKey(E => E.EmpId);
-
-              e
-                    .Property(e => e.Name)
-                    .IsRequired()
-                    .HasColumnType("varchar")
-                    .HasMaxLength(50)
-                    .HasColumnName("empName");
-
-               e
-                    .Property(e => e.Age)
-                    .IsRequired(false);
-
-
-            e
-                    .Property(e => e.Salary)
-                    .HasColumnType("money");
-
-                modelBuilder.Entity<Employee>()
-                    .Property(e => e.DateCreation)
-                    //.HasDefaultValue(DateTime.Now)
-                    .HasDefaultValueSql("Getdate()");
-
-
-
-
-
-            });
-        }
+        //}
         public companyDbContext() : base()
         {
 
